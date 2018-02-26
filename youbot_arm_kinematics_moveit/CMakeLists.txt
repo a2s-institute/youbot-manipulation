@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
+set (CMAKE_CXX_STANDARD 11)
+
 project(youbot_arm_kinematics_moveit)
 
 find_package(catkin REQUIRED
