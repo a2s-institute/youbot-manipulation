@@ -1,7 +1,7 @@
 #include <youbot_arm_kinematics_moveit/youbot_arm_kinematics_moveit.h>
 #include <youbot_arm_kinematics_moveit/configuration_comparator.h>
 
-#include <pluginlib/class_list_macros.h>
+#include <pluginlib/class_list_macros.hpp>
 #include <tf_conversions/tf_kdl.h>
 
 #include <algorithm>
@@ -185,12 +185,11 @@ bool KinematicsPlugin::extractKinematicData(const urdf::Model &robot_model,
         std::vector<double> &lower_limits,
         std::vector<double> &upper_limits) const
 {
-    boost::shared_ptr<urdf::Link> link = boost::const_pointer_cast<urdf::Link>(
-            robot_model.getLink(tip_frame));
+    urdf::LinkConstSharedPtr link = robot_model.getLink(tip_frame);
 
     while ((link) && (link->name != base_frame)) {
         link_names.push_back(link->name);
-        boost::shared_ptr<urdf::Joint> joint = link->parent_joint;
+        urdf::JointSharedPtr joint = link->parent_joint;
 
         // Don't consider invalid, unknown or fixed joints
         if ((!joint) || (joint->type == urdf::Joint::UNKNOWN)

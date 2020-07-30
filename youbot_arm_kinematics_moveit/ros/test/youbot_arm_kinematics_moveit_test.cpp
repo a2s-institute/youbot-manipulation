@@ -1,5 +1,5 @@
 #include <moveit/kinematics_base/kinematics_base.h>
-#include <pluginlib/class_loader.h>
+#include <pluginlib/class_loader.hpp>
 #include <ros/ros.h>
 #include <geometry_msgs/Pose.h>
 #include <gtest/gtest.h>
