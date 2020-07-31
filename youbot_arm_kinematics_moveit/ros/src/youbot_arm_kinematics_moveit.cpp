@@ -30,7 +30,9 @@ bool KinematicsPlugin::initialize(const std::string &robot_description,
         const std::string &tip_frame,
         double search_discretization)
 {
-    setValues(robot_description, group_name, base_frame, tip_frame,
+    std::vector<std::string> tip_frames;
+    tip_frames.push_back(tip_frame);
+    setValues(robot_description, group_name, base_frame, tip_frames,
             search_discretization);
 
     urdf::Model robot_model;
